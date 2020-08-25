@@ -1,4 +1,4 @@
-# Gabo
+# Gaby
 this is a react application that implements a chatbot
 ###### Gabriel Schlam Huber - A01024122
 ###### Saúl Montes De Oca Martínez - A01025975
