@@ -1,8 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-#Chatbot with react-simple-chatbot
+# Chatbot with react-simple-chatbot
 
-##See the whole documentation right [here](https://lucasbassetti.com.br/react-simple-chatbot/#/)
+## See the whole documentation right [here](https://lucasbassetti.com.br/react-simple-chatbot/#/)
 
 ## Available Scripts
 
