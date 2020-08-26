@@ -1,5 +1,5 @@
 
-# Gaby
+# Equipo 1
 This is a react application that implements a chatbot
 Chavos, despues de que hagan pull, creen una branch para no interferir con lo que los demás van a ir haciendo. Si no lo hacen me enojo alv jeje bueno bai grax los tqm.
 ##### Gabriel Schlam Huber - A01024122
