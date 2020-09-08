@@ -96,11 +96,7 @@ def watson_response(session_id, message):
         "session_id": watson_session_id
     }
 
-    return  {
-                "intent": response["response"]["output"]["intents"][0]["intent"],
-                "text": response["response"]["output"]["generic"][0]["text"],
-            
-            }
+    return  response  
 
 def watson_instance(iam_apikey: str, url: str, version: str = "2019-02-28") -> AssistantV2:
     try:

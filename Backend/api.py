@@ -28,8 +28,11 @@ cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 class GET_MESSAGE(Resource):
     def post(self):
-        
-        return watson_response(watson_create_session(), request.json["message"])
+        resp = watson_response(watson_create_session(), request.json["message"])
+        return jsonify(
+                text= resp["response"]["output"]["generic"][0]["text"],
+                intent= resp["response"]["output"]["intents"][0]["intent"]
+            )
 
 
 api.add_resource(GET_MESSAGE, '/getMessage')  # Route_1
