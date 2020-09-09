@@ -13,7 +13,7 @@ class HtmlComponent extends React.Component {
 class Chatbot extends React.Component {
   handleNewUserMessage = (message) => {
     axios.post("http://127.0.0.1:5002/getMessage", { message }).then((res) => {
-      console.log(res.data.text);
+      console.log(res.data);
       renderCustomComponent(HtmlComponent, { text: res.data.text });
       return res.data;
     });
