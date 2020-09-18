@@ -1,14 +1,13 @@
-import * as React from 'react'
+import React from "react";
 
 class LandingPage extends React.Component{
-    render (){
+    render(){
         return (
             <div>
-                <h1>
-                    Landing
-                </h1>
+                <h2>LandingPage</h2>
             </div>
-        )
+        );
     }
 }
-export default LandingPage
+
+export default LandingPage;
