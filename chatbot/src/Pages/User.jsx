@@ -1,13 +1,14 @@
 import React from "react";
 
-class LandingPage extends React.Component{
+class User extends React.Component{
     render(){
         return (
             <div>
-                <h2>LandingPage</h2>
+                <h2>User</h2>
+                <h3>User</h3>
             </div>
         );
     }
 }
 
-export default LandingPage;
+export default User;

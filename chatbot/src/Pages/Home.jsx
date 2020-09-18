@@ -1,15 +1,15 @@
-import * as React from 'react'
+import React from "react";
 
 class Home extends React.Component{
-    render (){
+    render(){
         return (
             <div>
                 <h1>
                     Chatbot Insta 
                 </h1>
             </div>
-        )
+        );
     }
 }
-export default Home
-  
+
+export default Home;

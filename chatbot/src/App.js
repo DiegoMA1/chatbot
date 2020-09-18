@@ -1,50 +1,29 @@
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
-import {BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import Home from './Pages/Home';
-import LandingPage from './Pages/LandingPage';
-import NavBar from './Shared/NavBar';
-import {Widget, addResponseMessage} from 'react-chat-widget';
+import React from "react";
+import Home from "./Pages/Home";
+import User from "./Pages/User";
+import LandingPage from "./Pages/LandingPage";
+import NavBar from "./Components/NavBar";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Chatbot from "./Components/Chatbot";
 import 'react-chat-widget/lib/styles.css';
-import SimpleForm from './Pages/SimpleForm';
-const handleNewMessage = (newMessage) => {
-    console.log(newMessage);
-    // Now send the message throught the backend API
-    addResponseMessage('Hola -> '+ newMessage);
-};
 
 export default function App() {
-  let [showChat, setShowChat] = useState(false);
-
-  const startChat = () => { setShowChat(true); }
-  const hideChat = () => { setShowChat(false); }
-
   return (
     <Router>
-      <NavBar></NavBar>
+      <NavBar />
       <Switch>
-        <Route exact path="/Landing">
-          <LandingPage></LandingPage>
+        <Route exact path="/">
+          <LandingPage />
         </Route>
         <Route path="/home">
-          <Home></Home>
+          <Home />
         </Route>
         <Route path="/user">
-          <Home></Home>
+          <User />
         </Route>
       </Switch>
-        <div className = "bot">
-        <div style ={{display: showChat ? "" : "none"}}>
-          <SimpleForm></SimpleForm>
-        </div>      
-        {/* <div> {showChat ? <SimpleForm></SimpleForm> : null} </div> */}
-        <div>
-          {!showChat 
-            ? <button className="btn-bot" onClick={() => startChat()}>click to chat... </button> 
-            : <button className="btn-bot" onClick={() => hideChat()}>click to hide... </button>}
-        </div>
-      </div>
+      <Chatbot />
+
     </Router>
-    
   );
 }
