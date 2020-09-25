@@ -11,6 +11,23 @@ class HtmlComponent extends React.Component {
   }
 }
 
+class DemoCarousel extends React.Component{
+      render(){
+        return (
+          <div>{ReactHtmlParser(
+            <Carousel>
+            {this.props.urls.forEach(url => (                  
+              <div>
+                <img src={url} alt="im" />
+                  <p className="legend">Legend 1</p>
+              </div>
+            ))}
+          </Carousel>
+          )}</div>
+        );
+      }
+}
+
 class Chatbot extends React.Component {
 
   componentDidMount() {
@@ -41,21 +58,21 @@ class Chatbot extends React.Component {
         }
 
         console.log(urls);
+        // addResponseMessage(urls);
 
-        return (
-          <Carousel>
-            {urls.forEach(url => (                  
-              <div>
-                <img src={url} alt="im" />
-                  <p className="legend">Legend 1</p>
-              </div>
-            ))}
-          </Carousel>
-        )
+        renderCustomComponent(DemoCarousel, {urls: urls})
+        // <Carousel>
+        //   {urls.forEach(url => (                  
+        //     <div>
+        //       <img src={url} alt="im" />
+        //         <p className="legend">Legend 1</p>
+        //     </div>
+        //   ))}
+        // </Carousel>
       }
       else{
         renderCustomComponent(HtmlComponent, { text: res.data.text });
-        return res.data;
+        // return res.data;
       }
       
     });
