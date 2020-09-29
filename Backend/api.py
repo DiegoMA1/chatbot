@@ -17,7 +17,7 @@ from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from flask import jsonify
 
 from IBM_Whatson import *
-
+from mlab import *
 
 load_dotenv()
 
@@ -36,6 +36,7 @@ class GET_MESSAGE(Resource):
                 intent= resp["response"]["output"]["intents"]
             )
         else:
+            insertUserData(request.json["message"], resp["response"]["output"]["intents"][0]["intent"])
             return jsonify(
                 text= resp["response"]["output"]["generic"][0]["text"],
                 intent= resp["response"]["output"]["intents"][0]["intent"]

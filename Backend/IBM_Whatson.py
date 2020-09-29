@@ -95,8 +95,13 @@ def watson_response(session_id, message):
         "response": watson_response,
         "session_id": watson_session_id
     }
+ 
+    #Guardar esto en db
+    print(message)
+    #print(response['response']['output']['intents'][0]["intent"])
+    return  response
 
-    return  response  
+
 
 def watson_instance(iam_apikey: str, url: str, version: str = "2019-02-28") -> AssistantV2:
     try:
