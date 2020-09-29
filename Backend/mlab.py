@@ -1,7 +1,7 @@
 import sys
 import pymongo
 
-uri = 'mongodb+srv://admin:admin123@cluster0.f9acl.gcp.mongodb.net/labWeb?retryWrites=true'
+uri = 'mongodb+srv://lab_user:labweb123@cluster0.f9acl.gcp.mongodb.net/labWeb?retryWrites=true'
 
 def insertUserData(message, intent):
     client = pymongo.MongoClient(uri)
