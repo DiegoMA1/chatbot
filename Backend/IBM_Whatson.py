@@ -98,7 +98,7 @@ def watson_response(session_id, message):
  
     #Guardar esto en db
     print(message)
-    print(response['response']['output']['intents'][0]["intent"])
+    #print(response['response']['output']['intents'][0]["intent"])
     return  response
 
 

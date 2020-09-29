@@ -1,12 +1,18 @@
 import sys
 import pymongo
-import os
 
-# request_data = {
-#             "mongo_uri_key": os.getenv("mongo_uri")
-#         }
-# uri = request_data.get("mongo_uri_key")
-uri = "mongodb://saul_mdo:Mssauce97@ds151450.mlab.com:51450/labweb?retryWrites=false"
+uri = 'mongodb+srv://admin:admin123@cluster0.f9acl.gcp.mongodb.net/labWeb?retryWrites=true'
+
+def insertUserData(message, intent):
+    client = pymongo.MongoClient(uri)
+    db = client.get_default_database()
+
+    database = db["data"]
+
+    database.insert({"intent": intent, "question": message})
+
+    client.close()
+
 
 ###############################################################################
 # main
@@ -39,12 +45,6 @@ def main(args):
     db = client.get_default_database()
     
     songs = db['songs']
-
-    # songs.insert_many(SEED_DATA)
-
-    query = {'song': 'One Sweet Day'}
-
-    songs.update(query, {'$set': {'artist': 'Mariah Carey ft. Boyz II Men'}})
 
     cursor = songs.find({'weeksAtOne': {'$gte': 10}}).sort('decade', 1)
 
