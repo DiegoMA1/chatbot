@@ -44,7 +44,7 @@ class Chatbot extends React.Component {
   handleNewUserMessage = (message) => {
     axios.post("http://127.0.0.1:5002/getMessage", { message }).then((res) => {
       console.log(res.data);
-      if(res.data.intent === "Mas_Populares") {
+      /* if(res.data.intent === "Mas_Populares") {
         const images = JSON.parse(res.data.text);
         console.log(images);
 
@@ -70,10 +70,10 @@ class Chatbot extends React.Component {
         //   ))}
         // </Carousel>
       }
-      else{
+      else{ */
         renderCustomComponent(HtmlComponent, { text: res.data.text });
         // return res.data;
-      }
+     // }
       
     });
   };
