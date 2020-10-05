@@ -13,6 +13,22 @@ def insertUserData(message, intent):
 
     client.close()
 
+def getWatsonResponseDB(intent):
+    client = pymongo.MongoClient(uri)
+    db = client.get_default_database()
+
+    database = db["watson_responses"]
+
+    response = database.find_one({'intent': intent})
+
+    print(response)
+    
+    client.close()
+
+    return response['html']
+
+
+
 
 ###############################################################################
 # main
