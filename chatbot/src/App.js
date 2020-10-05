@@ -13,7 +13,7 @@ export default function App() {
       <NavBar />
       <Switch>
         <Route exact path="/">
-          <LandingPage />
+          <Home />
         </Route>
         <Route path="/home">
           <Home />
