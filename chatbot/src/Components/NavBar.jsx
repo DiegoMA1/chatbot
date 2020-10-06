@@ -19,11 +19,11 @@ class NavBar extends React.Component {
     render() {
         return (
             <Navbar bg="dark" variant="dark">
-                <Navbar.Brand href="/">Navbar</Navbar.Brand>
+                <Navbar.Brand href="/">Gaby</Navbar.Brand>
                 <Nav className="mr-auto">
                 <Nav.Link href="/home">Home</Nav.Link>
-                <Nav.Link href="/user">User</Nav.Link>
-                <Nav.Link href="/">{this.state.search}</Nav.Link>
+                <Nav.Link href="/user">Mis cuentas</Nav.Link>
+                <Nav.Link href="/user">Tiempo real</Nav.Link>
                 </Nav>
                 <Form inline>
                 <FormControl type="text" onChange={this.searchItem} placeholder="Search" className="mr-sm-2" />
