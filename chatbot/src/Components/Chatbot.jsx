@@ -3,7 +3,7 @@ import {Widget, renderCustomComponent, addResponseMessage} from "react-chat-widg
 import "react-chat-widget/lib/styles.css";
 import ReactHtmlParser from "react-html-parser";
 import axios from "axios";
-import { Carousel } from 'react-responsive-carousel';
+//import { Carousel } from 'react-responsive-carousel';
 
 class HtmlComponent extends React.Component {
   render() {
@@ -11,7 +11,7 @@ class HtmlComponent extends React.Component {
   }
 }
 
-class DemoCarousel extends React.Component{
+/* class DemoCarousel extends React.Component{
       render(){
         return (
           <div>{ReactHtmlParser(
@@ -26,7 +26,7 @@ class DemoCarousel extends React.Component{
           )}</div>
         );
       }
-}
+} */
 
 class Chatbot extends React.Component {
 
