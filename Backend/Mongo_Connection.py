@@ -3,13 +3,13 @@ import pymongo
 
 uri = 'mongodb+srv://lab_user:labweb123@cluster0.f9acl.gcp.mongodb.net/labWeb?retryWrites=true'
 
-def insertUserData(message, intent):
+def insertUserData(message, intent, fromWhere):
     client = pymongo.MongoClient(uri)
     db = client.get_default_database()
 
     database = db["data"]
 
-    database.insert({"intent": intent, "question": message})
+    database.insert({"intent": intent, "question": message, "fromWhere": fromWhere})
 
     client.close()
 
@@ -26,6 +26,20 @@ def getWatsonResponseDB(intent):
     client.close()
 
     return response['html']
+
+def getWatsonResponseDBWhatsApp(intent):
+    client = pymongo.MongoClient(uri)
+    db = client.get_default_database()
+
+    database = db["watson_responses"]
+
+    response = database.find_one({'intent': intent})
+
+    #print(response)
+    
+    client.close()
+
+    return response['whatsApp']
 
 
 

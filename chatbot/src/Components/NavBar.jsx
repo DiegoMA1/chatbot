@@ -63,6 +63,7 @@ class NavBar extends React.Component {
                 <Nav.Link href="/home">Home</Nav.Link>
                 <Nav.Link href="/user">Mis cuentas</Nav.Link>
                 <Nav.Link href="/user">Tiempo real</Nav.Link>
+                <Nav.Link href="/whatsApp">WhatsApp</Nav.Link>
                 </Nav>
                 <Form inline>
                 <FormControl type="text" onChange={this.searchItem} placeholder="Search" className="mr-sm-2" />
