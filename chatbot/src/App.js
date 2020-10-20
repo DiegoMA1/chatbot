@@ -7,7 +7,7 @@ import Chatbot from "./Components/Chatbot";
 import "react-chat-widget/lib/styles.css";
 import PrivateRoute from "./Components/PrivateRoute";
 import WhatsApp from "./Pages/WhatsApp";
-
+import FormPage from "./Pages/Login";
 export default function App() {
   return (
     <Router>
@@ -21,6 +21,9 @@ export default function App() {
         {/* <PrivateRoute exact path="/user" component={User} /> */}
         <Route path="/whatsApp">
           <WhatsApp />
+        </Route>
+        <Route path="/login">
+          <FormPage/>
         </Route>
       </Switch>
       <Chatbot />
