@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Chatbot from "./Components/Chatbot";
 import "react-chat-widget/lib/styles.css";
 import PrivateRoute from "./Components/PrivateRoute";
+import WhatsApp from "./Pages/WhatsApp";
 
 export default function App() {
   return (
@@ -16,7 +17,11 @@ export default function App() {
           <Home />
         </Route>
         <PrivateRoute exact path="/home" component={Home} />
-        <PrivateRoute exact path="/user" component={User} />
+        <PrivateRoute exact path="/user" component={User} /> 
+        {/* <PrivateRoute exact path="/user" component={User} /> */}
+        <Route path="/whatsApp">
+          <WhatsApp />
+        </Route>
       </Switch>
       <Chatbot />
     </Router>
