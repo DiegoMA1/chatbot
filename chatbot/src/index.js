@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import LoginValidator from './LoginValidator';
 import * as serviceWorker from './serviceWorker';
 import {Auth0Provider} from '@auth0/auth0-react';
 
@@ -11,7 +11,7 @@ ReactDOM.render(
     clientId = "S3k4NIyWmQkxLKudNCYVoENrbwP8ElLg"
     redirectUri = {window.location.origin}
   >
-    <App />
+    <LoginValidator />
   </Auth0Provider>,
   document.getElementById('root')
 );

@@ -16,9 +16,12 @@ export default function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <PrivateRoute exact path="/home" component={Home} />
-        <PrivateRoute exact path="/user" component={User} /> 
-        {/* <PrivateRoute exact path="/user" component={User} /> */}
+        <Route path="/home">
+          <Home />
+        </Route>
+        <Route path="/user">
+          <User />
+        </Route>
         <Route path="/whatsApp">
           <WhatsApp />
         </Route>
