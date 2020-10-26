@@ -1,10 +1,10 @@
 import React from "react";
-import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+import { Navbar, Nav, Form, FormControl, Button, Dropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {useAuth0} from '@auth0/auth0-react'
 
 const Profile = () => {
-    const { user, isAuthenticated, isLoading } = useAuth0();
+    const { user, isAuthenticated, isLoading, logout } = useAuth0();
 
     if (isLoading) {
         return ""
@@ -16,13 +16,16 @@ const Profile = () => {
 
     return (
         isAuthenticated ? (
-            <div>
-                <img src={user.picture} alt={user.name}></img>
-                <h2>{user.name}</h2>
-                <p>{user.email}</p>
-
-                <LogoutButton/>
-            </div>
+                <Dropdown style={{marginRight: 24, marginLeft: 24}}>
+                    <Dropdown.Toggle variant="" id="dropdown-basic" style={{color: 'white'}}>
+                        <img src={user.picture} style={{borderRadius: 100, height: 42, marginRight: 12}} alt={user.name}/>
+                        {user.given_name}
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <Dropdown.Item href="#/">Preferencias</Dropdown.Item>
+                        <Dropdown.Item onClick={ () => logout( { returnTo: window.location.origin})}>Logout</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
         ) : (
             <LoginButton/>
         )
