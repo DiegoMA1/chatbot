@@ -65,8 +65,8 @@ class NavBar extends React.Component {
             <Navbar bg="dark" variant="dark">
                 <Navbar.Brand className="ml-5" href="/">Gaby</Navbar.Brand>
                 <Nav className="mr-auto">
-                <Nav.Link active={this.props.location.pathname == "/home"} href="/home">Home</Nav.Link>
-                <Nav.Link active={this.props.location.pathname == "/user"} href="/user">Mis cuentas</Nav.Link>
+                <Nav.Link active={this.props.location.pathname === "/home"} href="/home">Home</Nav.Link>
+                <Nav.Link active={this.props.location.pathname === "/user"} href="/user">Mis cuentas</Nav.Link>
                 <Nav.Link href="/user">Tiempo real</Nav.Link>
                 </Nav>
                 <Form inline>
