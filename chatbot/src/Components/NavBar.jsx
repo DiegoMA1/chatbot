@@ -1,10 +1,12 @@
 import React from "react";
-import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+import { Navbar, Nav, Form, FormControl, Button, Dropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {useAuth0} from '@auth0/auth0-react'
+import {withRouter} from 'react-router-dom';
+
 
 const Profile = () => {
-    const { user, isAuthenticated, isLoading } = useAuth0();
+    const { user, isAuthenticated, isLoading, logout } = useAuth0();
 
     if (isLoading) {
         return ""
@@ -16,13 +18,16 @@ const Profile = () => {
 
     return (
         isAuthenticated ? (
-            <div>
-                <img src={user.picture} alt={user.name}></img>
-                <h2>{user.name}</h2>
-                <p>{user.email}</p>
-
-                <LogoutButton/>
-            </div>
+                <Dropdown style={{marginRight: 24, marginLeft: 24}}>
+                    <Dropdown.Toggle variant="" id="dropdown-basic" style={{color: 'white'}}>
+                        <img src={user.picture} style={{borderRadius: 100, height: 42, marginRight: 12}} alt={user.name}/>
+                        {user.given_name}
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <Dropdown.Item href="#/">Preferencias</Dropdown.Item>
+                        <Dropdown.Item onClick={ () => logout( { returnTo: window.location.origin})}>Logout</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
         ) : (
             <LoginButton/>
         )
@@ -58,12 +63,11 @@ class NavBar extends React.Component {
     render() {
         return (
             <Navbar bg="dark" variant="dark">
-                <Navbar.Brand href="/">Gaby</Navbar.Brand>
+                <Navbar.Brand className="ml-5" href="/">Gaby</Navbar.Brand>
                 <Nav className="mr-auto">
-                <Nav.Link href="/home">Home</Nav.Link>
-                <Nav.Link href="/user">Mis cuentas</Nav.Link>
+                <Nav.Link active={this.props.location.pathname === "/home"} href="/home">Home</Nav.Link>
+                <Nav.Link active={this.props.location.pathname === "/user"} href="/user">Mis cuentas</Nav.Link>
                 <Nav.Link href="/user">Tiempo real</Nav.Link>
-                <Nav.Link href="/whatsApp">WhatsApp</Nav.Link>
                 </Nav>
                 <Form inline>
                 <FormControl type="text" onChange={this.searchItem} placeholder="Search" className="mr-sm-2" />
@@ -75,4 +79,4 @@ class NavBar extends React.Component {
     }
 }
 
-export default NavBar;
+export default withRouter(NavBar);
