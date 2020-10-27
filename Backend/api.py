@@ -58,8 +58,8 @@ class GET_MESSAGE_WHATSAPP(Resource):
         print("message received: " + request.values.get('Body', '').lower())
         print("from: " + request.values.get('From', '').lower())
 
-        account_sid = 'AC26adb5ed4f3321ea522441d4b3bc1a31'
-        auth_token = '33394be2202a1df90805e252dceaf4c4'
+        account_sid = os.environ['TWILIO_ACCOUNT_SID']
+        auth_token = os.environ['TWILIO_AUTH_TOKEN']
         client = Client(account_sid, auth_token)
 
         message = request.values.get('Body', '').lower()
