@@ -66,9 +66,10 @@ class GET_MESSAGE_WHATSAPP(Resource):
         resp = watson_response(watson_create_session(), message)
         #print(resp)
         if resp["response"]["output"]["intents"] == []:
-            return jsonify(
-                text= resp["response"]["output"]["generic"][0]["text"],
-                intent= resp["response"]["output"]["intents"]
+            message = client.messages.create(
+                from_='whatsapp:+14155238886',
+                body=resp["response"]["output"]["generic"][0]["text"],
+                to=request.values.get('From', '').lower()
             )
         else:
             intent = resp["response"]["output"]["intents"][0]["intent"]
