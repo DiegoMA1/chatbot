@@ -26,11 +26,10 @@ class Home extends React.Component{
         return (
             <Fragment>
                 <Container fluid>
-                <SideBar/>
                 <Row>
-                    <Col md={12} lg={12} style={{marginTop: 32}}>
-                    <Row>
-                    <Col md={3} lg={3}></Col>
+                    <SideBar/>
+                    <Col md={10} lg={10} style={{marginTop: 32}}>
+                    <Row className="justify-content-around">
                     <Col md={9} lg={9}>
                         <Card style={{ width: '50rem', heigth: '40rem' }}>
                             <Card.Body>
