@@ -6,6 +6,8 @@ import Chatbot from "./Components/Chatbot";
 import "react-chat-widget/lib/styles.css";
 import WhatsApp from "./Pages/WhatsApp";
 import FormPage from "./Pages/Login";
+import Twitter from "./Pages/Twitter";
+
 export default function App() {
   return (
     <Router>
@@ -21,6 +23,9 @@ export default function App() {
         </Route>
         <Route path="/whatsApp">
           <WhatsApp />
+        </Route>
+        <Route path="/twitter">
+          <Twitter />
         </Route>
         <Route path="/login">
           <FormPage/>
