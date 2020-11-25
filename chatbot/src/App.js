@@ -1,7 +1,6 @@
 import React from "react";
 import Home from "./Pages/Home";
-import User from "./Pages/User";
-import NavBar from "./Components/NavBar";
+import Profile from "./Pages/Profile";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Chatbot from "./Components/Chatbot";
 import "react-chat-widget/lib/styles.css";
@@ -10,7 +9,6 @@ import FormPage from "./Pages/Login";
 export default function App() {
   return (
     <Router>
-      <NavBar />
       <Switch>
         <Route exact path="/">
           <Home />
@@ -18,8 +16,8 @@ export default function App() {
         <Route path="/home">
           <Home />
         </Route>
-        <Route path="/user">
-          <User />
+        <Route path="/profile">
+          <Profile />
         </Route>
         <Route path="/whatsApp">
           <WhatsApp />

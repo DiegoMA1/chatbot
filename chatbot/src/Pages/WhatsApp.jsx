@@ -1,14 +1,15 @@
 import React from "react";
 import image from '../Images/whatsappTwilio.png';
-import SideBar from '../Components/SideBar'
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
+import Layout from '../Components/Layout';
+
 
 class WhatsApp extends React.Component{
     render(){
         return (
+            <Layout>
                 <Row className="ml-3 mr-3">
-                    <SideBar/>
-                    <Col md={10} lg={10} style={{marginTop: 32}}>
+                    <Col md={12} lg={12} style={{marginTop: 32}}>
                         <h1 align="center">WhatsApp</h1>
                         <h3 align="center">Escanea el siguiente código QR para contactarnos por WhatsApp</h3>
                         <center>
@@ -16,6 +17,8 @@ class WhatsApp extends React.Component{
                         </center>
                     </Col>
                 </Row>
+            </Layout>
+
         );
     }
 }

@@ -1,56 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ListGroup, Col, Row } from 'react-bootstrap';
-import {useAuth0} from '@auth0/auth0-react'
 
+import home from '../Images/home.png'
 import facebook from '../Images/facebook.png'
 import whatsapp from '../Images/whatsapp.png'
 import instagram from '../Images/instagram.png'
 import twitter from '../Images/twitter.png'
 
-
-export default function SideBar(props){
-    const { user } = useAuth0();
-
+function Sidebar(props) {
     return (
-        <>
-        <Col md={2} lg={2} style={{height: '100%',position: 'fixed', paddingTop: 24}}>
-            <ListGroup variant="flush" style={{height: '100%'}}>
-                <ListGroup.Item>
-                    <Row className="justify-content-around">
-                        <Col md={4} className="p-0 pl-3">
-                            <img src={user.picture} style={{borderRadius: 100, height: 42}} alt={user.name}/>
-                        </Col>
-                        <Col md={4} style={{fontSize: 14, fontWeight: 'bold'}} className="p-0 text-muted">
-                            {user.given_name} <br/>
-                            {user.email}
-                        </Col>
-                        <Col></Col>
-                    </Row>
-                </ListGroup.Item>
-                    <ListGroup.Item action href="/whatsapp"><img style={{height: 26, borderRadius: 100, marginRight:8}} src={whatsapp}/>
-                        <Link to="/whatsapp" style={{textDecoration: 'none', fontSize: 14}} className="text-muted">
-                            WhatsApp
-                        </Link>
-                    </ListGroup.Item>
-                    <ListGroup.Item action href="/instagram"><img style={{height: 26, marginRight:8}} src={instagram}/>
-                        <Link to="/instagram" style={{textDecoration: 'none', fontSize: 14}} className="text-muted">
-                            Instagram
-                        </Link>
-                    </ListGroup.Item>
-                    <ListGroup.Item action href="/facebook"><img style={{height: 24, marginRight:8}} src={facebook}/>
-                        <Link to="/facebook" style={{textDecoration: 'none', fontSize: 14}} className="text-muted">
-                            Facebook
-                        </Link>
-                    </ListGroup.Item>
-                    <ListGroup.Item action href="/twitter"><img style={{height: 26, paddingBottom: 5, marginRight:8}} src={twitter}/>
-                        <Link to="/twitter" style={{textDecoration: 'none', fontSize: 14}} className="text-muted">
-                            Twitter
-                        </Link>
-                    </ListGroup.Item>
-            </ListGroup>
-        </Col>
-        <hr/>
-        </>
-    )
+        <div className="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div className="container-fluid d-flex flex-column p-0">
+                <a className="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="/">
+                    <div className="sidebar-brand-text mx-3"><span>Gaby</span></div>
+                </a>
+                <hr className="sidebar-divider my-0"/>
+                <ul className="nav navbar-nav text-light" id="accordionSidebar">
+                    <li className="nav-item"><Link className="nav-link active" to="/"><img style={{height: 21, borderRadius: 100, marginRight:8}} src={home}/> Dashboard </Link></li>
+                    <li className="nav-item"><Link className="nav-link" to="/whatsapp"><img style={{height: 24, borderRadius: 100, marginRight:8}} src={whatsapp}/> WhatsApp </Link></li>
+                    <li className="nav-item"><Link className="nav-link" to="/instagram"><img style={{height: 26, marginRight:8}} src={instagram}/>  Instagram</Link></li>
+                    <li className="nav-item"><Link className="nav-link" to="/instagram"><img style={{height: 34, paddingBottom: 5, marginRight:8}} src={twitter}/>  Twitter</Link></li>
+                    <li className="nav-item"><Link className="nav-link" to="/instagram"><img style={{height: 24, marginRight:8}} src={facebook}/>  Facebook</Link></li>
+
+                </ul>
+            </div>
+        </div>
+    );
 }
+
+export default Sidebar;
