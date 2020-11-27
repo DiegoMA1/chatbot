@@ -62,6 +62,18 @@ class GET_MESSAGE_WHATSAPP(Resource):
         auth_token = os.environ['TWILIO_AUTH_TOKEN']
         client = Client(account_sid, auth_token)
 
+        if request.values.get('Latitude', '').lower()!='' and request.values.get('Longitude', '').lower()!='':
+            latitude = request.values.get('Latitude', '').lower()
+            longitude = request.values.get('Longitude', '').lower()
+            print("Latitude: " + latitude)
+            print("Longitude: " + longitude)
+            message = client.messages.create(
+                from_='whatsapp:+14155238886',
+                body="Tu latitud es: " + latitude + "\nY tu longitud es: " + longitude,
+                to=request.values.get('From', '').lower()
+            )
+            return
+
         message = request.values.get('Body', '').lower()
         resp = watson_response(watson_create_session(), message)
         #print(resp)
