@@ -13,14 +13,27 @@ const Twitter = () => {
     if (text[0] == "twitter") {
         return (
             <Layout>
+                <h1 style={{textAlign: 'center'}}>Twitter Profile</h1>
                 <Row className="ml-3 mr-3">
                     <Col md={12} lg={12} style={{marginTop: 32}}>
                         <center>
                             <TwitterTimelineEmbed
                                 sourceType="profile"
                                 userId={parseInt(text[1])}
-                                options={{height: 550, width: 1000}}
+                                options={{height: 700, width: 1000}}
                                 />
+                        </center>
+                    </Col>
+                </Row>
+                <h1 style={{textAlign: 'center'}}>Likes</h1>
+                <Row className="ml-3 mr-3">
+                    <Col md={12} lg={12} style={{marginTop: 32}}>
+                        <center>
+                            <TwitterTimelineEmbed
+                            sourceType="likes"
+                            userId={parseInt(text[1])}
+                            options={{height: 700, width: 1000}}
+                            />
                         </center>
                     </Col>
                 </Row>
