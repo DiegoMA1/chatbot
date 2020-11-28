@@ -3,6 +3,10 @@ import os
 import json
 import logging
 import requests
+import datetime
+import locale
+import time
+from time import sleep
 
 import flask
 from flask import Flask, request
@@ -55,6 +59,8 @@ class GET_MESSAGE(Resource):
 
 class GET_MESSAGE_WHATSAPP(Resource):
     def post(self):
+        locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
+
         print("message received: " + request.values.get('Body', '').lower())
         print("from: " + request.values.get('From', '').lower())
 
@@ -67,11 +73,49 @@ class GET_MESSAGE_WHATSAPP(Resource):
             longitude = request.values.get('Longitude', '').lower()
             print("Latitude: " + latitude)
             print("Longitude: " + longitude)
+            text = latitude + "," + longitude
+            response = requests.get(
+                url="https://api.predicthq.com/v1/events",
+                headers={
+                "Authorization": "Bearer " + os.getenv("predicthq_key"),
+                "Accept": "application/json"
+                },
+                params={
+                "location_around.origin": text,
+                "location_around.offset": "50km"
+                }
+            )
+
+            res = response.json()
+
             message = client.messages.create(
                 from_='whatsapp:+14155238886',
-                body="Tu latitud es: " + latitude + "\nY tu longitud es: " + longitude,
+                body="A continuación tus eventos cercanos:",
                 to=request.values.get('From', '').lower()
             )
+
+            for i in range(0,4):
+                current = res["results"][i]
+                dateStart = datetime.datetime.strptime(current["start"], '%Y-%m-%dT%H:%M:%SZ')
+                dateS = dateStart.strftime("%B %d, %Y, %H:%M:%S")
+                dateEnd = datetime.datetime.strptime(current["end"], '%Y-%m-%dT%H:%M:%SZ')
+                dateE = dateEnd.strftime("%B %d, %Y, %H:%M:%S")
+                message = client.messages.create(
+                    from_='whatsapp:+14155238886',
+                    body= "Evento: " + current["title"] + '\n'  + "Categoría: " + current["category"] +  '\n'  + "Fecha y hora de inicio: " + str(dateS) +  '\n'  +  "Fecha y hora de fin: " + str(dateE) + '\n'  + "Dirección: " + current["entities"][0]["formatted_address"],
+                    to=request.values.get('From', '').lower()
+                )
+                message = client.messages.create(
+                    from_='whatsapp:+14155238886',
+                    body= "Evento: " + current["title"] + '\n',
+                    persistent_action= ["geo:" + str(current["location"][1]) + "," + str(current["location"][0])],
+                    to=request.values.get('From', '').lower()
+                )
+
+                time.sleep(1)
+                
+                pass
+            
             return
 
         message = request.values.get('Body', '').lower()
