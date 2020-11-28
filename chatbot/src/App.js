@@ -7,6 +7,8 @@ import "react-chat-widget/lib/styles.css";
 import WhatsApp from "./Pages/WhatsApp";
 import FormPage from "./Pages/Login";
 import Twitter from "./Pages/Twitter";
+import Instagram from "./Pages/Instagram";
+import Facebook from "./Pages/Facebook";
 
 export default function App() {
   return (
@@ -26,6 +28,12 @@ export default function App() {
         </Route>
         <Route path="/twitter">
           <Twitter />
+        </Route>
+        <Route path="/instagram">
+          <Instagram />
+        </Route>
+        <Route path="/facebook">
+          <Facebook />
         </Route>
         <Route path="/login">
           <FormPage/>
