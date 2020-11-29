@@ -164,8 +164,58 @@ class GET_MESSAGE_WHATSAPP(Resource):
                     to=request.values.get('From', '').lower()
                 )
 
+class GET_EVENTS(Resource):
+    def post(self):
+        print(request.json)
+        latitude = request.json["latitude"]
+        longitude = request.json["longitude"]
+        
+        print(latitude)
+        print(longitude)
+
+        text = str(latitude) + "," + str(longitude)
+
+        response = requests.get(
+            url="https://api.predicthq.com/v1/events",
+            headers={
+            "Authorization": "Bearer " + os.getenv("predicthq_key"),
+            "Accept": "application/json"
+            },
+            params={
+            "location_around.origin": text,
+            "limit": 4
+            }
+        )
+
+        res = response.json()
+        print(res)
+
+        resultFormatted = []
+
+        for event in res["results"]:
+            arr = []
+            dateStart = datetime.datetime.strptime(event["start"], '%Y-%m-%dT%H:%M:%SZ')
+            dateS = dateStart.strftime("%B %d, %Y, %H:%M:%S")
+            dateEnd = datetime.datetime.strptime(event["end"], '%Y-%m-%dT%H:%M:%SZ')
+            dateE = dateEnd.strftime("%B %d, %Y, %H:%M:%S")
+                
+            if event["entities"]:
+                bod = "Evento: " + event["title"] + '  \n'  + "Categoría: " + event["category"] +  '  \n'  + "Fecha y hora de inicio: " + str(dateS) +  '  \n'  +  "Fecha y hora de fin: " + str(dateE) + '  \n'  + "Dirección: " + event["entities"][0]["formatted_address"],
+                pass
+            if not event["entities"]:
+                bod = "Evento: " + event["title"] + '  \n'  + "Categoría: " + event["category"] +  '  \n'  + "Fecha y hora de inicio: " + str(dateS) +  '  \n'  +  "Fecha y hora de fin: " + str(dateE) + '  \n',
+                pass
+            
+            arr.append(bod)
+            arr.append(event["location"])
+
+            resultFormatted.append(arr)
+
+        return resultFormatted
+
 api.add_resource(GET_MESSAGE, '/getMessage')  # Route_1
 api.add_resource(GET_MESSAGE_WHATSAPP, '/getMessageWhatsapp')  # Route_2
+api.add_resource(GET_EVENTS, '/getEvents')  # Route_3
 
 if __name__ == '__main__':
     app.run(port='5002')
