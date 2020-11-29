@@ -82,7 +82,7 @@ class GET_MESSAGE_WHATSAPP(Resource):
                 },
                 params={
                 "location_around.origin": text,
-                "location_around.offset": "50km"
+                "limit": 4
                 }
             )
 
@@ -94,27 +94,35 @@ class GET_MESSAGE_WHATSAPP(Resource):
                 to=request.values.get('From', '').lower()
             )
 
-            for i in range(0,4):
-                current = res["results"][i]
-                dateStart = datetime.datetime.strptime(current["start"], '%Y-%m-%dT%H:%M:%SZ')
+            for event in res["results"]:
+                dateStart = datetime.datetime.strptime(event["start"], '%Y-%m-%dT%H:%M:%SZ')
                 dateS = dateStart.strftime("%B %d, %Y, %H:%M:%S")
-                dateEnd = datetime.datetime.strptime(current["end"], '%Y-%m-%dT%H:%M:%SZ')
+                dateEnd = datetime.datetime.strptime(event["end"], '%Y-%m-%dT%H:%M:%SZ')
                 dateE = dateEnd.strftime("%B %d, %Y, %H:%M:%S")
+                
+                if event["entities"]:
+                    bod = "Evento: " + event["title"] + '\n'  + "Categoría: " + event["category"] +  '\n'  + "Fecha y hora de inicio: " + str(dateS) +  '\n'  +  "Fecha y hora de fin: " + str(dateE) + '\n'  + "Dirección: " + event["entities"][0]["formatted_address"],
+                    pass
+                if not event["entities"]:
+                    bod = "Evento: " + event["title"] + '\n'  + "Categoría: " + event["category"] +  '\n'  + "Fecha y hora de inicio: " + str(dateS) +  '\n'  +  "Fecha y hora de fin: " + str(dateE) + '\n',
+                    pass
+                                    
                 message = client.messages.create(
                     from_='whatsapp:+14155238886',
-                    body= "Evento: " + current["title"] + '\n'  + "Categoría: " + current["category"] +  '\n'  + "Fecha y hora de inicio: " + str(dateS) +  '\n'  +  "Fecha y hora de fin: " + str(dateE) + '\n'  + "Dirección: " + current["entities"][0]["formatted_address"],
+                    body= bod,
                     to=request.values.get('From', '').lower()
                 )
                 message = client.messages.create(
                     from_='whatsapp:+14155238886',
-                    body= "Evento: " + current["title"] + '\n',
-                    persistent_action= ["geo:" + str(current["location"][1]) + "," + str(current["location"][0])],
+                    body= "Evento: " + event["title"] + '\n',
+                    persistent_action= ["geo:" + str(event["location"][1]) + "," + str(event["location"][0])],
                     to=request.values.get('From', '').lower()
                 )
 
                 time.sleep(1)
                 
                 pass
+            
             
             return
 
