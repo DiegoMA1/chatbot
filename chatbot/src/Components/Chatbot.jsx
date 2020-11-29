@@ -72,20 +72,11 @@ class Chatbot extends React.Component {
     });
   }
 
-  checkPermissions = () => {
-    navigator.permissions.query({name:'geolocation'}).then(function(result) {
-      console.log(result);
-      if (result.state != 'granted') {
-        addResponseMessage("Por favor autoriza tu ubicación en tu navegador para continuar");
-      } 
-    });
-  }
-
   getLocation = async () => {
     navigator.permissions.query({name:'geolocation'}).then(function(result) {
       console.log(result);
       if (result.state != 'granted') {
-        addResponseMessage("Por favor autoriza tu ubicación en tu navegador");
+        addResponseMessage("Por favor autoriza tu ubicación en tu navegador para continuar");
       }
     });
     if (navigator.geolocation) {
