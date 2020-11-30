@@ -16,11 +16,11 @@ function Sidebar(props) {
                 </a>
                 <hr className="sidebar-divider my-0"/>
                 <ul className="nav navbar-nav text-light" id="accordionSidebar">
-                    <li className="nav-item"><Link className="nav-link active" to="/"><img style={{height: 21, borderRadius: 100, marginRight:8}} src={home}/> Dashboard </Link></li>
-                    <li className="nav-item"><Link className="nav-link" to="/whatsapp"><img style={{height: 24, borderRadius: 100, marginRight:8}} src={whatsapp}/> WhatsApp </Link></li>
-                    <li className="nav-item"><Link className="nav-link" to="/instagram"><img style={{height: 26, marginRight:8}} src={instagram}/>  Instagram</Link></li>
-                    <li className="nav-item"><Link className="nav-link" to="/twitter"><img style={{height: 34, paddingBottom: 5, marginRight:8}} src={twitter}/>Twitter</Link></li>
-                    <li className="nav-item"><Link className="nav-link" to="/instagram"><img style={{height: 24, marginRight:8}} src={facebook}/>  Facebook</Link></li>
+                    <li className="nav-item"><Link className="nav-link active" to="/"><img style={{height: 21, borderRadius: 100, marginRight:8}} src={home} alt="dashboard"/> Dashboard </Link></li>
+                    <li className="nav-item"><Link className="nav-link" to="/whatsapp"><img style={{height: 24, borderRadius: 100, marginRight:8}} src={whatsapp} alt="whatsapp"/> WhatsApp </Link></li>
+                    <li className="nav-item"><Link className="nav-link" to="/instagram"><img style={{height: 26, marginRight:8}} src={instagram} alt="instagram"/>  Instagram</Link></li>
+                    <li className="nav-item"><Link className="nav-link" to="/twitter"><img style={{height: 34, paddingBottom: 5, marginRight:8}} src={twitter} alt="twitter"/>Twitter</Link></li>
+                    <li className="nav-item"><Link className="nav-link" to="/instagram"><img style={{height: 24, marginRight:8}} src={facebook} alt="facebook"/>  Facebook</Link></li>
 
                 </ul>
             </div>

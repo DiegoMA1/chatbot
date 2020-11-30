@@ -10,7 +10,7 @@ const Twitter = () => {
     console.log(user.sub);
     var text = user.sub.split('|');
     console.log(text);
-    if (text[0] == "twitter") {
+    if (text[0] === "twitter") {
         return (
             <Layout>
                 <h1 style={{textAlign: 'center'}}>Twitter Profile</h1>

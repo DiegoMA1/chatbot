@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, Container, Row, Col } from 'react-bootstrap';
-import { ImStatsDots } from 'react-icons/im';
-import {BsPersonSquare} from 'react-icons/bs';
+//import { Button, Container, Row, Col } from 'react-bootstrap';
+//import { ImStatsDots } from 'react-icons/im';
+//import {BsPersonSquare} from 'react-icons/bs';
 import LineChart from '../Components/LineChart';
 import Card from '../Components/Card';
 import Resume from './Resume';
@@ -10,7 +10,7 @@ import Status from './Status';
 
 
 const Dashboard = () => {
-    const followers = {
+    /* const followers = {
         textAlign: "center",
         backgroundColor: "DodgerBlue",
         color: "white"
@@ -24,7 +24,7 @@ const Dashboard = () => {
         textAlign: "center",
         backgroundColor: "#ff8c00",
         color: "white"
-    }
+    } */
     return (
         <div className="container-fluid">       
             <div className="d-sm-flex justify-content-between align-items-center mb-4">
@@ -51,7 +51,7 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-{/* <Container fluid>
+/*{ <Container fluid>
 <Row>
 
     <Col md={12} lg={12} style={{marginTop: 32,}}>
@@ -137,4 +137,4 @@ export default Dashboard;
         </Row>
     </Col>
 </Row>
-</Container> */}
+</Container> }*/

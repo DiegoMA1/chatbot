@@ -23,7 +23,7 @@ const NavBar = () => {
                             <div className="dropdown-menu shadow dropdown-menu-right animated--grow-in">
                                     <Link className="dropdown-item" to="/profile">Profile</Link>
                                     <div className="dropdown-divider"></div>
-                                    <a className="dropdown-item" onClick={ () => logout( { returnTo: window.location.origin})}>Logout</a>
+                                    <button className="dropdown-item" onClick={ () => logout( { returnTo: window.location.origin})}>Logout</button>
                             </div>
                         </div>
                     </li>

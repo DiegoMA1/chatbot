@@ -12,7 +12,7 @@ const Profile = () => {
                 <div className="row mb-3">
                     <div className="col-lg-4">
                         <div className="card mb-3">
-                            <div className="card-body text-center shadow"><img className="rounded-circle mb-3 mt-4" src={user.picture} width="160" height="160"/>
+                            <div className="card-body text-center shadow"><img className="rounded-circle mb-3 mt-4" src={user.picture} alt={user.name} width="160" height="160"/>
                                 <div className="mb-3"><button className="btn btn-primary btn-sm" type="button">Change Photo</button></div>
                             </div>
                         </div>
